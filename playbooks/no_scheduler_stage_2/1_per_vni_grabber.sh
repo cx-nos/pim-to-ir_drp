@@ -5,6 +5,6 @@ inventory='/home/olvs/ansible/inventories/INT/hosts.yml'
 extra_vars='/home/cspc/ansible/playbooks/no_scheduler_stage_2/extra_vars.yml'
 
 for t in ${vni_list[@]}; do
-  export ANSIBLE_HOST_KEY_CHECKING=False; $ansible_exec $playbooks_dir/1_generate_configs_per_vni.yml -i $inventory -e "@$extra_vars" -e "vni=$t"
+  echo ANSIBLE_HOST_KEY_CHECKING=False; $ansible_exec $playbooks_dir/1_generate_configs_per_vni.yml -i $inventory -e "@$extra_vars" -e "vni=$t"
 done
 
