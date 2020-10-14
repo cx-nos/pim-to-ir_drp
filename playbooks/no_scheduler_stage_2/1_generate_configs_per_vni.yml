@@ -69,7 +69,7 @@
     - name: Generate configuration files
       template:
         src: '{{ path }}/{{ templates_folder }}/{{ template_name }}'
-        dest: '{{ path }}/configs-vni-{{ vni }}/{{ inventory_hostname }}.cfg'
+        dest: '{{ path }}/configs-vni-{{ vni }}/{{ inventory_hostname }}-{{ job }}.cfg'
       when: host_vni_list | length != 0
  
     - name: Insert inventory line
