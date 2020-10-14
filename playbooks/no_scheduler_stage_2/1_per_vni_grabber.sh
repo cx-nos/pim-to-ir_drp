@@ -1,6 +1,6 @@
 vni_list=(1001 1002 1003 1004)
 ansible_exec='/usr/bin/ansible-playbook'
-playbooks_dir='/home/cspc/ansible/pim-to-ir_drp/playbooks/no_scheduler_stage_2/pim-to-ir_drp'
+playbooks_dir='/home/cspc/ansible/pim-to-ir_drp/playbooks/no_scheduler_stage_2'
 inventory='/home/olvs/ansible/pim-to-ir_drp/inventories/INT/hosts.yml'
 extra_vars='/home/cspc/ansible/pim-to-ir_drp/playbooks/no_scheduler_stage_2/extra_vars.yml'
 
