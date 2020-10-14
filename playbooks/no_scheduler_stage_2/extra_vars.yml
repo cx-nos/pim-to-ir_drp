@@ -4,7 +4,7 @@ vni_list:
     - '1002'
     - '1003'
     - '1004'
-path: '/home/cspc/ansible'
+path: '/home/cspc/ansible/pim-to-ir_drp'
 owner: 'cspc'
 group: 'cspc'
 templates_folder: 'templates'
