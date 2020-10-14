@@ -17,13 +17,13 @@
 
     - name: Clean job inventory (if exists)
       file: 
-        path: '{{ path }}/{{ inventory_folder }}/{{ job }}_vni-{{ vni }}.yml'
+        path: '{{ path }}/{{ inventory_folder }}/{{ job }}_inventory-vni-{{ vni }}.yml'
         state: absent
 
     - name: Create clean job inventory
       copy:
         content: "[{{ job }}]\n"
-        dest: '{{ path }}/{{ inventory_folder }}/{{ job }}_vni-{{ vni }}.yml'
+        dest: '{{ path }}/{{ inventory_folder }}/{{ job }}_inventory-vni-{{ vni }}.yml'
         force: no
         group: '{{ group }}'
         owner: '{{ owner }}'
@@ -73,6 +73,6 @@
       when: host_vni_list | length != 0
  
     - name: Insert inventory line
-      shell: echo '{{ inventory_hostname }}' ansible_host='{{ hostvars[inventory_hostname].ansible_host|quote }}' >> '{{ path }}/{{ inventory_folder }}/{{ job }}_inventory_vni-{{ vni }}.yml'
+      shell: echo '{{ inventory_hostname }}' ansible_host='{{ hostvars[inventory_hostname].ansible_host|quote }}' >> '{{ path }}/{{ inventory_folder }}/{{ job }}_inventory-vni-{{ vni }}.yml'
       when: host_vni_list | length != 0 
 
