@@ -1,0 +1,24 @@
+- name: Configuration load 
+  hosts: "{{ job }}"
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: Configuration file deletion (if exists)
+      nxos_command:
+        commands:
+          - command: 'delete bootflash:///{{ inventory_hostname }}-{{ job }}.cfg no-prompt'
+      
+    - name: Configuration file copy
+      nxos_command:
+        commands:
+          - command: 'copy ftp://{{ ftp_user }}@{{ ftp_host }}/{{ configs_dir }}/{{ inventory_hostname }}-{{ job }}.cfg bootflash: vrf management'
+            prompt: 
+              - 'password'
+            answer: 
+              - "{{ ftp_password }}"
+
+    - name: Configuration execute
+      nxos_command:
+        commands:
+          - command: 'copy bootflash:///{{ inventory_hostname }}-{{ job }}.cfg running-config'

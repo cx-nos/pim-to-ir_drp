@@ -1,0 +1,9 @@
+#jinja2: trim_blocks: "true", lstrip_blocks: "true"
+
+interface nve1
+{% for vni in host_vni_list %}
+ member vni {{ vni.vni }}
+   no mcast-group
+   ingress-replication protocol bgp
+!
+{% endfor %}

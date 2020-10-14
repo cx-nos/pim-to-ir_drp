@@ -1,0 +1,37 @@
+---
+- name: Rollback execute
+  hosts: "{{ job }}" 
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: Rollback execute
+      nxos_command:
+        commands:
+          - 'rollback running-config checkpoint {{ inventory_hostname }}-before-{{ job }}'
+
+    - name: Grab rollback status 
+      nxos_command:
+        commands:
+          - 'show rollback status | json'
+      register: r1
+
+    - name: Show rollback status
+      debug:
+        msg: "{{ item.operation_status }} - {{ item.end_time }}}}"
+      with_items: "{{ r1.stdout }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: Grab diff rollback-patch
+      nxos_command:
+        commands:
+          - 'sh diff rollback-patch running-config checkpoint {{ inventory_hostname }}-before-{{ job }}'
+      register: r2
+
+    - name: Show diff rollback-patch
+      debug:
+        msg: "{{ r2.stdout }}"
+
+
+

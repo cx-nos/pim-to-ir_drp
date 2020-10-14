@@ -1,0 +1,16 @@
+pod: 'AC'
+vni_list:
+    - '1001'
+    - '1002'
+    - '1003'
+    - '1004'
+path: '/home/cspc/ansible'
+owner: 'cspc'
+group: 'cspc'
+templates_folder: 'templates'
+inventory_folder: 'inventories/STAN-1'
+template_name: 'IR.j2'
+ftp_host: '10.56.204.123'
+job: 'software-upgrade'
+configs_dir: 'configs'
+

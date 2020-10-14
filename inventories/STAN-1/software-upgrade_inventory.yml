@@ -1,0 +1,4 @@
+[software-upgrade]
+SKO-DATA-AC-053-N27-01-LAB ansible_host=10.56.204.15
+SKO-DATA-AC-053-N27-02-LAB ansible_host=10.56.204.16
+SKO-DATA-AC-053-N27-03-LAB ansible_host=10.56.204.17

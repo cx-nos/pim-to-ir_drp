@@ -1,0 +1,25 @@
+- name: Checkpoint configuration and check
+  hosts: "{{ job }}"
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: Clear checkpoint (if exists)
+      nxos_command:
+        commands:
+          - 'no checkpoint {{ inventory_hostname }}-before-{{ job }}'
+      ignore_errors: True
+
+    - name: Create checkpoint
+      nxos_command:
+        commands:
+          - 'checkpoint {{ inventory_hostname }}-before-{{ job }}'
+    
+    - name: Grab checkpoint info
+      nxos_command:
+        commands: "sh checkpoint {{ inventory_hostname }}-before-{{ job }} | grep '!Time'"
+      register: r1
+
+    - name: Show checkpoint info
+      debug:
+        msg: "{{ r1.stdout[0] }}"
