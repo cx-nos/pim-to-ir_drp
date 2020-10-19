@@ -62,7 +62,7 @@
 
     - name: Generate configuration files
       template:
-        src: '{{ path }}/{{ templates_folder }}/IR.j2'
+        src: '{{ path }}/{{ templates_folder }}/{{ template_name }}'
         dest: '{{ path }}/configs/{{ inventory_hostname }}-{{ job }}.cfg'
       when: host_vni_list | length != 0
  
