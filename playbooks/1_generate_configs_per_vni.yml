@@ -5,7 +5,7 @@
   connection: local
 
   tasks: 
-    - name: Clean configs dir (if exists)
+    - name: Delete configs dir (if exists)
       file: 
         path: '{{ path }}/configs-vni-{{ vni }}/'
         state: absent
@@ -15,7 +15,7 @@
         path: '{{ path }}/configs-vni-{{ vni }}'
         state: directory
 
-    - name: Clean job inventory (if exists)
+    - name: Delete job inventory (if exists)
       file: 
         path: '{{ path }}/{{ inventory_folder }}/{{ job }}_inventory-vni-{{ vni }}.yml'
         state: absent
