@@ -46,7 +46,7 @@
     - name: Collect show nve vni
       nxos_command:
         commands:
-          - "show nve vni {{ item }} | json"
+          - "show nve vni {{ item }} detail | json"
       with_items: "{{ vni_list }}"
       register: result
 
