@@ -9,3 +9,9 @@ ansible-playbook playbooks/1_generate_configs.yml -i inventories/INT/hosts.yml -
 ansible-playbook playbooks/2_checkpoint_config.yml -i inventories/INT/pim-to-ir_drp_inventory.yml -e "@inventories/INT/extra_vars.yml"
 ansible-playbook playbooks/3_configure_host.yml -i inventories/INT/pim-to-ir_drp_inventory.yml -e "@inventories/INT/extra_vars.yml"
 ansible-playbook playbooks/4_rollback_execute.yml -i inventories/INT/pim-to-ir_drp_inventory.yml -e "@inventories/INT/extra_vars.yml"
+
+ansible-playbook playbooks/0_grab_show_run.yml -i inventories/STAN-1/hosts.yml -e "@inventories/STAN-1/extra_vars.yml"
+ansible-playbook playbooks/1_generate_configs.yml -i inventories/STAN-1/hosts.yml -e "@inventories/STAN-1/extra_vars.yml"
+ansible-playbook playbooks/2_checkpoint_config.yml -i inventories/STAN-1/pim-to-ir_drp_inventory.yml -e "@inventories/STAN-1/extra_vars.yml"
+ansible-playbook playbooks/3_configure_host.yml -i inventories/STAN-1/pim-to-ir_drp_inventory.yml -e "@inventories/STAN-1/extra_vars.yml"
+ansible-playbook playbooks/4_rollback_execute.yml -i inventories/STAN-1/pim-to-ir_drp_inventory.yml -e "@inventories/STAN-1/extra_vars.yml"
