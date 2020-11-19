@@ -44,9 +44,10 @@
       delegate_to: localhost
 
     - name: Collect show nve vni
-      nxos_config:
-        lines:
-          - "show nve vni {{ item }} detail | json"
+      nxos_command:
+        commands:
+        - command: "show nve vni {{ item }}"
+          output: json
       with_items: "{{ vni_list }}"
       register: result
 
