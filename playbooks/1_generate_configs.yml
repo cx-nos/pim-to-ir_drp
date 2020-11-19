@@ -46,7 +46,7 @@
     - name: Collect show nve vni
       nxos_command:
         commands:
-        - command: "show nve vni {{ item }}"
+        - command: "show vlan id {{ item }}"
           output: json
       with_items: "{{ vni_list }}"
       register: result
