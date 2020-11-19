@@ -12,4 +12,5 @@ inventory_folder: 'inventories/STAN-1'
 template_name: 'IR.j2'
 ftp_host: '10.56.204.123'
 job: 'pim-to-ir_drp'
+configs_dir: 'configs'
 
