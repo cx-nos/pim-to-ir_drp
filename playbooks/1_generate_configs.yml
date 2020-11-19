@@ -52,8 +52,8 @@
 
     - name: debug
       debug: 
-        msg: "{{ item.stdout }}"
-      with_items: "{{ result.results }}"
+        msg: "{{ result }}"
+#      with_items: "{{ result.results }}"
 
 #    - name: set
 #      set_fact:
