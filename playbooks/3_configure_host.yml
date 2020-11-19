@@ -12,7 +12,7 @@
     - name: Configuration file copy
       nxos_command:
         commands:
-          - command: 'copy ftp://{{ ftp_user }}@{{ ftp_host }}/{{ job }}/configs/{{ inventory_hostname }}-{{ job }}.cfg bootflash: vrf management'
+          - command: 'copy ftp://{{ ftp_user }}@{{ ftp_host }}/{{ job }}/{{ configs_dir }}/{{ inventory_hostname }}-{{ job }}.cfg bootflash: vrf management'
             prompt: 
               - 'password'
             answer: 
