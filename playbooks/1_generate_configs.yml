@@ -51,28 +51,23 @@
       with_items: "{{ vni_list }}"
       register: result
 
-    - name: debug
-      debug: 
-        msg: "{{ result }}"
-#      with_items: "{{ result.results }}"
+    - name: set
+      set_fact:
+        host_vni_list: "{{ host_vni_list }} + [ {{ item.stdout[0].TABLE_nve_vni.ROW_nve_vni }} ]"
+      with_items: "{{ result.results }}"
+      when: item.stdout[0] != '' and 
+            item.stdout[0].TABLE_nve_vni.ROW_nve_vni.mcast != 'UnicastBGP' and 
+            item.stdout[0].TABLE_nve_vni.ROW_nve_vni.mcast != 'n/a'
+      loop_control:
+        label: "{{ item.invocation.module_args.commands }}"
 
-#    - name: set
-#      set_fact:
-#        host_vni_list: "{{ host_vni_list }} + [ {{ item.stdout[0].TABLE_nve_vni.ROW_nve_vni }} ]"
-#      with_items: "{{ result.results }}"
-#      when: item.stdout[0] != '' and 
-#            item.stdout[0].TABLE_nve_vni.ROW_nve_vni.mcast != 'UnicastBGP' and 
-#            item.stdout[0].TABLE_nve_vni.ROW_nve_vni.mcast != 'n/a'
-#      loop_control:
-#        label: "{{ item.invocation.module_args.commands }}"
-
-#    - name: Generate configuration files
-#      template:
-#        src: '{{ path }}/{{ templates_folder }}/{{ template_name }}'
-#        dest: '{{ path }}/configs/{{ inventory_hostname }}-{{ job }}.cfg'
-#      when: host_vni_list | length != 0
-# 
-#    - name: Insert inventory line
-#      shell: echo '{{ inventory_hostname }}' ansible_host='{{ hostvars[inventory_hostname].ansible_host|quote }}' >> '{{ path }}/{{ inventory_folder }}/{{ job }}_inventory.yml'
-#      when: host_vni_list | length != 0 
+    - name: Generate configuration files
+      template:
+        src: '{{ path }}/{{ templates_folder }}/{{ template_name }}'
+        dest: '{{ path }}/configs/{{ inventory_hostname }}-{{ job }}.cfg'
+      when: host_vni_list | length != 0
+ 
+    - name: Insert inventory line
+      shell: echo '{{ inventory_hostname }}' ansible_host='{{ hostvars[inventory_hostname].ansible_host|quote }}' >> '{{ path }}/{{ inventory_folder }}/{{ job }}_inventory.yml'
+      when: host_vni_list | length != 0 
 
