@@ -57,8 +57,8 @@
       when: item.stdout[0] != '' and 
             item.stdout[0].TABLE_nve_vni.ROW_nve_vni.mcast != 'UnicastBGP' and 
             item.stdout[0].TABLE_nve_vni.ROW_nve_vni.mcast != 'n/a'
-      loop_control:
-        label: "{{ item.invocation.module_args.commands }}"
+#      loop_control:
+#        label: "{{ item.invocation.module_args.commands }}"
 
     - name: Generate configuration files
       template:
