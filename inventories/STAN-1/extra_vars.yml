@@ -1,6 +1,6 @@
 pod: 'AC'
 vni_list:
-    - '1001'
+    - '1003'
 path: '/home/cspc/ansible/pim-to-ir_drp'
 owner: 'cspc'
 group: 'cspc'
