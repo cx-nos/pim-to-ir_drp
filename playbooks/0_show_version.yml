@@ -1,0 +1,37 @@
+---
+- name: Initial preparation
+  hosts: localhost
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Clean configs dir (if exists)
+      file: 
+        path: '{{ path }}/sh_version/'
+        state: absent
+
+    - name: Create configs directory
+      file: 
+        path: '{{ path }}/sh_version'
+        state: directory
+
+- name: Generate running-configs 
+  hosts: "{{ pod }}"
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: Collect show version
+      nxos_command:
+        commands:
+          - "show version"
+      register: result
+
+    - name: Create show run for each host
+      copy:
+        content: "{{ result.stdout[0] }}"
+        dest: '{{ path }}/sh_version/{{ inventory_hostname }}-sh_version.cfg'
+        force: no
+        group: '{{ group }}'
+        owner: '{{ owner }}'
+        mode: 0777
