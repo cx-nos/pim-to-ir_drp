@@ -1,0 +1,7 @@
+ansible_python_interpreter: /usr/bin/env python3 
+ansible_network_os: nxos 
+ansible_user: "cspc" 
+ansible_password: "C0llect0r!pass7" 
+ftp_user: 'olvs'
+ftp_password: 'voltage=220'
+ 

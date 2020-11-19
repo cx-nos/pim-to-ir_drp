@@ -1,0 +1,12 @@
+pod: '023'
+vni_list:
+    - '9012216'
+path: '/home/olvs/ansible/pim-to-ir_drp'
+owner: 'cspc'
+group: 'cspc'
+templates_folder: 'templates'
+inventory_folder: 'inventories/INT'
+template_name: 'IR.j2'
+ftp_host: '10.101.247.9'
+job: 'pim-to-ir_drp'
+
