@@ -9,4 +9,5 @@ inventory_folder: 'inventories/INT'
 template_name: 'IR.j2'
 ftp_host: '10.101.247.9'
 job: 'pim-to-ir_drp'
+configs_dir: 'configs'
 
