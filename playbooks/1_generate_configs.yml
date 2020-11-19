@@ -46,11 +46,11 @@
     - name: Collect show nve vni
       nxos_command:
         commands:
-        - command: "show nve vni {{ item }} | json"
+          - "show nve vni {{ item }} | json"
       with_items: "{{ vni_list }}"
       register: result
 
-    - name: set
+    - name: Fill host_vni_list - mcast vni's only
       set_fact:
         host_vni_list: "{{ host_vni_list }} + [ {{ item.stdout[0].TABLE_nve_vni.ROW_nve_vni }} ]"
       with_items: "{{ result.results }}"
