@@ -18,17 +18,18 @@
 1. `ansible-playbook playbooks/4_rollback_execute.yml -i inventories/STAN-1/pim-to-ir_drp_inventory.yml -e "@inventories/STAN-1/extra_vars.yml"`
 
 # Preparation steps 
-1. Notepad the intentory in cspcaplha host:
-nslookup SKO-DATA-AC-**<pod_number>** | grep Address | tail -n 1 >> **<pod_number>**-hosts.out
-nslookup SKO-DATA-AG-**<pod_number>** | grep Address | tail -n 1 >> **<pod_number>**-hosts.out
+1. Notepad the intentory in cspcalpha host:
+	* `nslookup SKO-DATA-AC-**<pod_number>** | grep Address | tail -n 1 >> **<pod_number>**-hosts.out`
+	* `nslookup SKO-DATA-AG-**<pod_number>** | grep Address | tail -n 1 >> **<pod_number>**-hosts.out`
 1. Notepad it to fit the ansible_host syntax:
-SKO-DATA-AC-XXX ansible_host=XXX
+	* `SKO-DATA-AC-XXX ansible_host=XXX`
 1. Insert all lines in proper group in the inventories/INT/hosts file
 1. Launch the general_analytics.py script with `show nve vni` from SKO-DATA-AC/AG-**<pod_number>** to grap all streched vni's
 1. Get the list and insert it in inventories/INT/extra_vars.yml:
 [**<pod_number>**]
 vni_list:
 ...
-1. 
+1. Change the vni list in 1_per_vni_grabber.sh file 
+1. Launch 
 
 
