@@ -18,8 +18,8 @@
 
 # Preparation steps 
 1. Notepad the intentory in cspcalpha host:
-	* `nslookup SKO-DATA-AC-**<pod_number>** | grep Address | tail -n 1 >> **<pod_number>**-hosts.out`
-	* `nslookup SKO-DATA-AG-**<pod_number>** | grep Address | tail -n 1 >> **<pod_number>**-hosts.out`
+	* `nslookup SKO-DATA-AC-<pod_number> | grep Address | tail -n 1 >> <pod_number>-hosts.out`
+	* `nslookup SKO-DATA-AG-<pod_number> | grep Address | tail -n 1 >> <pod_number>-hosts.out`
 1. Notepad it to fit the ansible_host syntax:
 	* `SKO-DATA-AC-XXX ansible_host=XXX`
 1. Insert all lines in proper group in the inventories/INT/hosts file
