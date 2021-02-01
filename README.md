@@ -30,6 +30,5 @@
 vni_list:
 ...
 1. Change the vni list in 1_per_vni_grabber.sh file 
-1. Launch 
 
 
