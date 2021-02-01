@@ -1,5 +1,5 @@
 # DRP per vni migration
-1. `ansible-playbook playbooks/3_configure_host.yml -i inventories/INT/pim-to-ir_drp_inventory-vni-*<vni_number>*.yml -e "@inventories/INT/extra_vars.yml" -e "configs_dir='pim-to-ir_drp/configs-vni-*<vni_number>*'"`
+1. `ansible-playbook playbooks/3_configure_host.yml -i inventories/INT/pim-to-ir_drp_inventory-vni-*<vni_number>*.yml -e "@inventories/INT/extra_vars.yml" -e "configs_dir='pim-to-ir_drp/configs-vni-*<vni_number>*'" --ask-vault-pass` 
 
 # Gracefull all vnis at once migration
 1. `ansible-playbook playbooks/0_grab_show_run.yml -i inventories/INT/hosts.yml -e "@inventories/INT/extra_vars.yml" --ask-vault-pass`
