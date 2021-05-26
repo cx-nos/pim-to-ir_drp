@@ -22,7 +22,7 @@
 
   tasks:
     - name: Collect show run
-      nxos_command:
+      cisco.nxos.nxos_command:
         commands:
           - "show run"
       register: result
